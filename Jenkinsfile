@@ -23,25 +23,31 @@ pipeline {
             }
         }
 
-        // stage('Backend Tests') {
-        //     agent {
-        //         docker {
-        //             image 'ruby:3.2-alpine'
-        //         }
-        //     }
-        //     steps {
-        //         dir('backend') {
-        //             sh '''
-        //                 ls -la
-        //                 ruby --version
-        //                 bundle --version
-        //                 echo "Installing backend dependencies..."
-        //                 bundle install
-        //                 echo "Running backend tests..."
-        //                 bundle exec rspec
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Backend Tests') {
+            agent {
+                docker {
+                    image 'ruby:3.4.4-alpine'
+                    args '-u root'
+                }
+            }
+            steps {
+                dir('backend') {
+                    sh '''
+                        ls -la
+                        ruby --version
+                        bundle --version
+
+                        echo "Installing build dependencies..."
+                        apk add --no-cache build-base yaml-dev libffi-dev
+
+                        echo "Installing backend dependencies..."
+                        bundle install
+                        
+                        echo "Running backend tests..."
+                        rails test
+                    '''
+                }
+            }
+        }
     }
 }
