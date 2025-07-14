@@ -16,6 +16,8 @@ pipeline {
                         npm --version
                         echo "Installing frontend dependencies..."
                         npm ci
+                        echo "Running frontend tests..."
+                        npm run test
                     '''
                 }
             }

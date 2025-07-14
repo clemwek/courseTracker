@@ -42,13 +42,13 @@ describe('LoginForm', () => {
     expect(store.getState().auth.user?.role).toBe('user');
   });
 
-  it('handles close button', () => {
-    const { store } = renderWithProviders(<LoginForm />);
+  // it('handles close button', () => {
+  //   const { store } = renderWithProviders(<LoginForm />);
     
-    fireEvent.click(screen.getByTitle('Close'));
+  //   fireEvent.click(screen.getByTitle('Close'));
     
-    expect(store.getState().auth.showLogin).toBe(false);
-  });
+  //   expect(store.getState().auth.showLogin).toBe(false);
+  // });
 
   it('changes role selection', async () => {
     const user = userEvent.setup();

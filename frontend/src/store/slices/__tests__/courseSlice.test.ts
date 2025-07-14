@@ -11,7 +11,7 @@ import courseReducer, {
   setCurrentWeek,
   updateWeekTitle,
 } from '../courseSlice';
-import { mockCourse, mockCourseItem } from '../../test/utils';
+import { mockCourse, mockCourseItem } from '../../../test/utils';
 
 describe('courseSlice', () => {
   const initialState = {

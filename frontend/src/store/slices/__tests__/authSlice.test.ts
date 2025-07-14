@@ -5,7 +5,7 @@ import authReducer, {
   showLoginForm,
   hideLoginForm,
 } from '../authSlice';
-import { mockUser } from '../../test/utils';
+import { mockUser } from '../../../test/utils';
 
 describe('authSlice', () => {
   const initialState = {
