@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { updateItem, deleteItem } from '../store/slices/courseSlice';
-import { BookOpen, FileText, PenTool, Check, X, Edit2, Trash2, Calendar } from 'lucide-react';
+import { BookOpen, FileText, PenTool, Check, Edit2, Trash2, Calendar } from 'lucide-react';
 import type { CourseItem } from '../store/slices/courseSlice';
 
 interface CourseItemCardProps {

@@ -17,6 +17,7 @@ const createTestStore = (preloadedState = {}) => {
 };
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'wrapper'> {
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   preloadedState?: any;
   store?: ReturnType<typeof createTestStore>;
 }

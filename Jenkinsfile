@@ -29,17 +29,20 @@ pipeline {
             steps {
                 dir('frontend') {
                     sh '''
+                        echo "Installing frontend dependencies..."
+                        npm ci
+
                         echo "Running frontend tests..."
-                        npm run test -- --ci --coverage --reporters=default --reporters=jest-junit
+                        npm run test
                     '''
                 }
             }
-            post {
-                always {
-                    junit 'frontend/junit.xml'
-                    archiveArtifacts artifacts: 'frontend/coverage/**', fingerprint: true
-                }
-            }
+            // post {
+            //     always {
+            //         junit 'frontend/junit.xml'
+            //         archiveArtifacts artifacts: 'frontend/coverage/**', fingerprint: true
+            //     }
+            // }
         }
 
         stage('Frontend Build') {
@@ -56,11 +59,11 @@ pipeline {
                     '''
                 }
             }
-            post {
-                success {
-                    archiveArtifacts artifacts: 'frontend/build/**', fingerprint: true
-                }
-            }
+            // post {
+            //     success {
+            //         archiveArtifacts artifacts: 'frontend/build/**', fingerprint: true
+            //     }
+            // }
         }
 
         // ================= Backend =================
@@ -108,12 +111,12 @@ pipeline {
                     '''
                 }
             }
-            post {
-                always {
-                    junit 'backend/test/reports/**/*.xml' // adjust if using junit formatter with Minitest or RSpec
-                    archiveArtifacts artifacts: 'backend/coverage/**', fingerprint: true
-                }
-            }
+            // post {
+            //     always {
+            //         junit 'backend/test/reports/**/*.xml' // adjust if using junit formatter with Minitest or RSpec
+            //         archiveArtifacts artifacts: 'backend/coverage/**', fingerprint: true
+            //     }
+            // }
         }
 
         // ================= Deploy =================
@@ -132,16 +135,16 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            echo 'Cleaning up workspace...'
-            cleanWs()
-        }
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed. Check stages above for details.'
-        }
-    }
+    // post {
+    //     always {
+    //         echo 'Cleaning up workspace...'
+    //         cleanWs()
+    //     }
+    //     success {
+    //         echo 'Pipeline completed successfully!'
+    //     }
+    //     failure {
+    //         echo 'Pipeline failed. Check stages above for details.'
+    //     }
+    // }
 }

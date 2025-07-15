@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { selectCourse } from '../store/slices/courseSlice';
-import { BookOpen, Calendar, User, ArrowRight, GraduationCap, Plus, Edit2, Trash2 } from 'lucide-react';
+import { BookOpen, Calendar, User, ArrowRight, GraduationCap, Plus, Edit2 } from 'lucide-react';
 import AddCourseForm from './AddCourseForm';
 import EditCourseForm from './EditCourseForm';
 
